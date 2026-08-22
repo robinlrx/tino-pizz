@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #071d63;
+  --color-royal: #1044b4;
+  --color-tomato: #db3028;
+  --color-gold: #f5b62e;
+  --color-cream: #fff7e8;
+  --color-ink: #12172a;
+
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --shadow-punch: 7px 7px 0 #071d63;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1.25px, transparent 1.25px);
+  background-size: 18px 18px;
+}
+
+.doodle {
+  /* -webkit-text-stroke: 1.5px #071d63; */
+  text-shadow: 3px 3px 0 rgba(7, 29, 99, 0.18);
+}
+
+.pizza-card:hover img {
+  transform: scale(1.07) rotate(1deg);
+}
+
+@media (max-width: 639px) {
+  .menu-table {
+    display: block;
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .menu-table thead,
+  .menu-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .menu-table tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 4.25rem 4.25rem;
+    width: 100%;
+  }
+
+  .menu-table th,
+  .menu-table td {
+    box-sizing: border-box;
+    min-width: 0;
+    width: auto !important;
+    padding: 0.7rem 0.3rem;
+  }
+
+  .menu-table th:first-child,
+  .menu-table td:first-child {
+    padding-left: 1rem;
+  }
+
+  .menu-table th:last-child,
+  .menu-table td:last-child {
+    padding-right: 1rem;
+  }
+
+  .menu-table th {
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  .menu-table td {
+    font-size: 0.78rem;
+  }
+
+  .menu-table td strong {
+    font-size: 1rem;
+  }
+
+  .menu-table td span {
+    overflow-wrap: anywhere;
+  }
+
+  .menu-table td:nth-child(2),
+  .menu-table td:nth-child(3) {
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+}
