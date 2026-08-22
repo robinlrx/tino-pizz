@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <link href="admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
     <title>Gestionnaire de contenu</title>
-</head>
+  </head>
   <body>
-	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-	<script type="module">
-		// import netlifyIdentity from "netlify-identity-widget";
-		import CMS from "decap-cms-app";
-		// Initialize the CMS object
-		CMS.init();
-	</script>
-</body>
+    <div id="nc-root"></div>
+
+    <script>
+      import CMS from 'decap-cms-app';
+      import netlifyIdentity from 'netlify-identity-widget';
+
+      netlifyIdentity.init();
+      CMS.init();
+    </script>
+  </body>
 </html>
