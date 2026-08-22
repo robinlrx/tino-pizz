@@ -1,7 +1,7 @@
 export type Pizza = {
 	name: string;
 	ingredients: string;
-	price26: string;
+	price26?: string;
 	price31: string;
 };
 
@@ -189,4 +189,17 @@ export const creamPizzas = [
 		"price26": "14,50 €",
 		"price31": "16,50 €"
 	}
+];
+
+export const sweetPizzas: Pizza[] = [
+	{
+		name: 'Créole',
+		ingredients: 'Compote pomme, ananas, banane, cassonade, chocolat, amandes grillées',
+		price31: '13,50 €',
+	},
+	{
+		name: 'Normande',
+		ingredients: 'Compote pomme, pomme, banane, cassonade, chocolat, amandes grillées',
+		price31: '13,50 €',
+	},
 ];
