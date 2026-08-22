@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro'
-import Footer from '../components/Footer.astro'
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import ValueCard from '../components/ValueCard.astro';
+import DayCard from '../components/DayCard.astro';
 
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -18,18 +21,14 @@ import Footer from '../components/Footer.astro'
 						pizza qui<br /><span class="doodle text-gold">fait le tour</span><br />de vos envies.</h1>
 					<p class="mt-6 max-w-lg text-lg leading-relaxed text-white/90">Des recettes généreuses, une pâte travaillée avec soin et des ingrédients choisis. Tino Pizz' s'arrête près de chez vous.</p>
 					<div class="mt-8 flex flex-wrap gap-4">
-						<a href="#carte"
-							class="rounded-full bg-gold px-6 py-3.5 font-bold text-navy shadow-punch transition hover:-translate-y-1">Voir
-							la carte <span aria-hidden="true">→</span></a>
-						<a href="#tournee"
-							class="rounded-full border-2 border-white px-6 py-3 font-bold text-white transition hover:bg-white hover:text-navy">Où
-							nous trouver</a>
+						<Button href='#carte' style='secondary'>Voir la carte <span aria-hidden="true">→</span></Button>
+						<Button href='#tournee' style='tertiary'>Où nous trouver</Button>
 					</div>
 				</div>
 				<div class="relative mx-auto w-full max-w-md lg:max-w-none">
 					<div class="absolute -inset-3 rotate-3 rounded-[2rem] bg-gold"></div>
 					<div
-						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_rgba(7,29,99,.35)]">
+						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_navy]">
 						<img src="https://tinopizz.alwaysdata.net/uploads/photo_6a072ec0b1a51.webp"
 							alt="Pizza artisanale fraîchement sortie du four"
 							class="h-[390px] w-full object-cover sm:h-[460px]" />
@@ -53,9 +52,7 @@ import Footer from '../components/Footer.astro'
 					<p class="mt-3 max-w-xl text-slate-600">Choisissez votre recette et votre format. Toutes nos pizzas
 						sont préparées à la commande.</p>
 				</div>
-				<a href="tel:+33676420730"
-					class="rounded-full bg-tomato px-5 py-3 font-bold text-white shadow-[3px_3px_0_#071d63] transition hover:-translate-y-0.5">Commander
-					au 06 76 42 07 30</a>
+				<Button href='tel:+33676420730' style='primaryBig'>Commander au 06 76 42 07 30</Button>
 			</div>
 
 			<div class="mb-8 overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
@@ -361,50 +358,25 @@ import Footer from '../components/Footer.astro'
 				Tino Pizz' lors de la mise à jour.</p>
 		</section>
 
-		<section id="tournee" class="bg-navy py-20 text-white">
+		<section id="tournee" class="bg-royal py-20 text-white">
 			<div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
 				<div>
 					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
 					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
-					<p class="mt-5 max-w-md leading-relaxed text-white/75">Retrouvez Tino Pizz' chaque semaine dans vos
-						villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p><a
-						href="tel:+33000000000"
-						class="mt-8 inline-block rounded-full bg-tomato px-6 py-3.5 font-bold text-white shadow-[4px_4px_0_#f5b62e] transition hover:-translate-y-1">📞
-						Appeler pour commander</a>
+					<p class="mt-5 mb-8 max-w-md leading-relaxed text-white">Retrouvez Tino Pizz' chaque semaine dans vos villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p>
+					<Button href='tel:+33676420730' style='primaryBig'>Commander au 06 76 42 07 30</Button>
 				</div>
 				<div class="grid gap-3 sm:grid-cols-2">
-					<div class="rounded-2xl bg-white p-5 text-ink">
-						<p class="font-display text-xl font-bold text-tomato">Mardi</p>
-						<p class="mt-3 font-bold">Prochain emplacement</p>
-						<p class="text-sm text-slate-500">Horaires à renseigner</p>
-					</div>
-					<div class="rounded-2xl bg-white p-5 text-ink">
-						<p class="font-display text-xl font-bold text-royal">Mercredi</p>
-						<p class="mt-3 font-bold">Prochain emplacement</p>
-						<p class="text-sm text-slate-500">Horaires à renseigner</p>
-					</div>
-					<div class="rounded-2xl bg-white p-5 text-ink">
-						<p class="font-display text-xl font-bold text-emerald-600">Jeudi</p>
-						<p class="mt-3 font-bold">Prochain emplacement</p>
-						<p class="text-sm text-slate-500">Horaires à renseigner</p>
-					</div>
-					<div class="rounded-2xl bg-white p-5 text-ink">
-						<p class="font-display text-xl font-bold text-tomato">Vendredi</p>
-						<p class="mt-3 font-bold">Prochain emplacement</p>
-						<p class="text-sm text-slate-500">Horaires à renseigner</p>
-					</div>
-					<div class="rounded-2xl bg-white p-5 text-ink">
-						<p class="font-display text-xl font-bold text-ink">Samedi</p>
-						<p class="mt-3 font-bold">Prochain emplacement</p>
-						<p class="text-sm text-slate-500">Horaires à renseigner</p>
-					</div>
+					<DayCard day="Mardi" adress="Prochain emplacement" hours="Horaires à renseigner"/>
+					<DayCard day="Mercredi" adress="Prochain emplacement" hours="Horaires à renseigner"/>
+					<DayCard day="Jeudi" adress="Prochain emplacement" hours="Horaires à renseigner"/>
+					<DayCard day="Vendredi" adress="Prochain emplacement" hours="Horaires à renseigner"/>
+					<DayCard day="Samedi" adress="Prochain emplacement" hours="Horaires à renseigner"/>
 				</div>
 			</div>
 		</section>
 
 		<section id="savoir-faire" class="relative overflow-hidden px-5 py-20 lg:px-8">
-			<div class="absolute right-[-75px] top-8 font-display text-[12rem] font-bold leading-none text-gold/25">✦
-			</div>
 			<div class="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
 				<div class="relative">
 					<div class="absolute -inset-3 -rotate-3 rounded-3xl bg-tomato"></div>
@@ -416,15 +388,9 @@ import Footer from '../components/Footer.astro'
 					<p class="mt-5 text-lg leading-relaxed text-slate-600">Ici, chaque pizza est préparée à la commande.
 						Notre secret ? Une pâte maison, du temps, de bons produits et une bonne dose de passion.</p>
 					<div class="mt-7 grid grid-cols-3 gap-3 text-center">
-						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🌾</span>
-							<p class="mt-2 text-xs font-bold text-navy">Pâte maison</p>
-						</div>
-						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🍅</span>
-							<p class="mt-2 text-xs font-bold text-navy">Produits frais</p>
-						</div>
-						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🤌</span>
-							<p class="mt-2 text-xs font-bold text-navy">Avec amour</p>
-						</div>
+						<ValueCard icon='🌾' text='Pâte maison' />
+						<ValueCard icon='🍅' text='Produits frais' />
+						<ValueCard icon='🤌' text='Avec amour' />
 					</div>
 				</div>
 			</div>

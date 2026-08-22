@@ -1,0 +1,21 @@
+---
+type ButtonStyle = 'primary' | 'primaryBig' | 'secondary' | 'tertiary'
+
+type Props = {
+	href: string
+	style: ButtonStyle
+}
+
+const { href, style = 'primary' } = Astro.props
+
+const styles: Record<ButtonStyle, string> = {
+	primary: 'bg-tomato text-white shadow-[3px_3px_0_#071d63] hover:bg-navy sm:px-5 px-4 py-2 text-sm',
+	primaryBig: 'bg-tomato text-white shadow-[3px_3px_0_#071d63] hover:bg-navy px-5 py-3',
+	secondary: 'bg-gold text-navy shadow-[3px_3px_0_#071d63] px-6 py-3.5 shadow-punch',
+	tertiary: 'border-2 border-white text-white hover:bg-white hover:text-navy px-6 py-3.5',
+}
+---
+
+<a href={href} class=`rounded-full font-bold transition ${styles[style]}`>
+	<slot />
+</a>

@@ -1,5 +1,5 @@
 ---
-
+import Button from "./Button.astro"
 ---
 
 <header class="sticky top-0 z-50 border-b-2 border-navy/10 bg-cream/95 backdrop-blur">
@@ -17,9 +17,7 @@
 		</div>
 		<!-- Remplacer le numéro de téléphone dans ce lien avant mise en ligne. -->
 		<div class="flex items-center gap-3">
-			<a href="tel:+33676420730"
-				class="rounded-full bg-tomato px-4 py-2 text-sm font-bold text-white shadow-[3px_3px_0_#071d63] transition hover:-translate-y-0.5 hover:bg-navy sm:px-5">Commander <span class="hidden sm:inline">par téléphone</span>
-			</a>
+			<Button href='tel:+33676420730' style='primary'>Commander <span class="hidden sm:inline">par téléphone</span></Button>
 			<!-- bg icon on mobile -->
 			<button id="menu-toggle" type="button"
 				class="inline-flex h-10 w-10 items-center justify-center rounded-xl border-2 border-navy text-navy transition hover:bg-gold lg:hidden"
