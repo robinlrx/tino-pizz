@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/img" # Emplacement où les fichiers seront stockés dans le dépôt
+public_folder: "/img" # L'attribut src pour les médias téléchargés
+
+collections:
+  - name: "pizza" # Utilisé dans les routes, par exemple, /admin/collections/pizza
+    label: "Pizza" # Utilisé dans l'UI
+    folder: "src/content/pizza" # Chemin d'accès au dossier dans lequel les documents sont conservés
+    create: true # Permettre aux utilisateurs de créer de nouveaux documents dans cette collection
+    fields: # Les champs de chaque document, généralement en tête de page
+      - { label: "Mise en page", name: "layout", widget: "hidden", default: "pizza" }
+      - label: "Base"
+        name: "base"
+        widget: "select"
+        options:
+          - "Tomate"
+          - "Crème fraîche"
+          - "Sucrée"
+
+      - { label: "Nom", name: "name", widget: "string" }
+      - { label: "Ingrédients", name: "ingredients", widget: "string" }
+
+      - label: "Prix 26 cm"
+        name: "price26"
+        widget: "number"
+        value_type: "float"
+        step: 0.01
+        required: false
+        condition:
+          field: "base"
+          value: "Sucrée"
+          operator: "!="
+
+      - { label: "Prix 31 cm", name: "price31", widget: "number", value_type: "float", step: 0.01 }
