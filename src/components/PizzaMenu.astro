@@ -1,0 +1,41 @@
+---
+import type { Pizza } from '../data/pizza';
+
+interface Props {
+	title: string;
+	headerColor: 'bg-tomato' | 'bg-navy';
+	pizzas: Pizza[];
+}
+
+const { title, headerColor, pizzas } = Astro.props;
+---
+
+<div class="mb-8 overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
+	<div class:list={['flex flex-wrap items-center gap-3 px-5 py-4 text-white sm:px-7', headerColor]}>
+		<h3 class="font-display text-2xl font-bold">{title}</h3><span
+			class="rounded-full bg-gold px-3 py-1 text-xs font-bold text-navy">26 cm &amp; 31 cm</span>
+	</div>
+	<div>
+		<table class="menu-table w-full min-w-[680px] text-left">
+			<thead class="border-b-2 border-navy bg-gold text-sm uppercase tracking-wide text-navy">
+				<tr>
+					<th class="px-5 py-3 sm:px-7">Pizza &amp; ingrédients</th>
+					<th class="w-28 px-4 py-3 text-center">26 cm</th>
+					<th class="w-28 px-4 py-3 text-center">31 cm</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y divide-navy/10 text-sm">
+				{pizzas.map((pizza, index) => (
+					<tr class:list={{ 'bg-cream/60': index % 2 === 1 }}>
+						<td class="px-5 py-4 sm:px-7">
+							<strong class="font-display text-lg text-navy">{pizza.name}</strong>
+							<span class="mt-1 block text-slate-500">{pizza.ingredients}</span>
+						</td>
+						<td class="px-4 text-center font-bold text-tomato">{pizza.price26}</td>
+						<td class="px-4 text-center font-bold text-tomato">{pizza.price31}</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	</div>
+</div>
