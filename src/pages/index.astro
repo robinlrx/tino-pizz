@@ -1,11 +1,435 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+	<main id="accueil">
+		<section class="dot-grid overflow-hidden bg-royal">
+			<div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:py-20 lg:grid-cols-[1.1fr_.9fr] lg:px-8 lg:py-24">
+				<div class="relative z-10 max-w-2xl">
+					<h1 class="font-display text-5xl font-bold leading-[.92] text-white sm:text-6xl lg:text-7xl">La
+						pizza qui<br /><span class="doodle text-gold">fait le tour</span><br />de vos envies.</h1>
+					<p class="mt-6 max-w-lg text-lg leading-relaxed text-white/90">Des recettes généreuses, une pâte travaillée avec soin et des ingrédients choisis. Tino Pizz' s'arrête près de chez vous.</p>
+					<div class="mt-8 flex flex-wrap gap-4">
+						<a href="#carte"
+							class="rounded-full bg-gold px-6 py-3.5 font-bold text-navy shadow-punch transition hover:-translate-y-1">Voir
+							la carte <span aria-hidden="true">→</span></a>
+						<a href="#tournee"
+							class="rounded-full border-2 border-white px-6 py-3 font-bold text-white transition hover:bg-white hover:text-navy">Où
+							nous trouver</a>
+					</div>
+				</div>
+				<div class="relative mx-auto w-full max-w-md lg:max-w-none">
+					<div class="absolute -inset-3 rotate-3 rounded-[2rem] bg-gold"></div>
+					<div
+						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_rgba(7,29,99,.35)]">
+						<img src="https://tinopizz.alwaysdata.net/uploads/photo_6a072ec0b1a51.webp"
+							alt="Pizza artisanale fraîchement sortie du four"
+							class="h-[390px] w-full object-cover sm:h-[460px]" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-y-2 border-navy bg-gold py-4">
+			<div
+				class="flex justify-center gap-5 overflow-hidden whitespace-nowrap font-display text-xl font-bold text-navy sm:gap-10 sm:text-2xl">
+				<span>• PÂTE MAISON</span><span>• PRODUITS FRAIS</span><span>• RECETTES GÉNÉREUSES</span><span>• PÂTE
+					MAISON</span></div>
+		</section>
+
+		<section id="carte" class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+			<div class="mb-10 flex flex-wrap items-end justify-between gap-5">
+				<div>
+					<p class="font-display text-lg text-tomato">À déguster sans modération</p>
+					<h2 class="font-display text-4xl font-bold text-navy sm:text-5xl">Notre carte</h2>
+					<p class="mt-3 max-w-xl text-slate-600">Choisissez votre recette et votre format. Toutes nos pizzas
+						sont préparées à la commande.</p>
+				</div>
+				<a href="tel:+33676420730"
+					class="rounded-full bg-tomato px-5 py-3 font-bold text-white shadow-[3px_3px_0_#071d63] transition hover:-translate-y-0.5">Commander
+					au 06 76 42 07 30</a>
+			</div>
+
+			<div class="mb-8 overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
+				<div class="flex flex-wrap items-center gap-3 bg-tomato px-5 py-4 text-white sm:px-7">
+					<h3 class="font-display text-2xl font-bold">Pizzas base sauce tomate</h3><span
+						class="rounded-full bg-gold px-3 py-1 text-xs font-bold text-navy">26 cm &amp; 31 cm</span>
+				</div>
+				<div>
+					<table class="menu-table w-full min-w-[680px] text-left">
+						<thead class="border-b-2 border-navy bg-gold text-sm uppercase tracking-wide text-navy">
+							<tr>
+								<th class="px-5 py-3 sm:px-7">Pizza &amp; ingrédients</th>
+								<th class="w-28 px-4 py-3 text-center">26 cm</th>
+								<th class="w-28 px-4 py-3 text-center">31 cm</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-navy/10 text-sm">
+							<tr>
+								<td class="px-5 py-4 sm:px-7">
+									<strong class="font-display text-lg text-navy">Marguarita</strong>
+									<span class="mt-1 block text-slate-500">Tomates, mozzarella, olives</span>
+								</td>
+								<td class="px-4 text-center font-bold text-tomato">8,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">10,00 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">La
+										Chorizo</strong><span class="mt-1 block text-slate-500">Tomates, mozzarella,
+										chorizo, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">11,50 €</td>
+								<td class="px-4 text-center font-bold text-tomato">13,50 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Lauratino</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, jambon, olives</span>
+								</td>
+								<td class="px-4 text-center font-bold text-tomato">11,50 €</td>
+								<td class="px-4 text-center font-bold text-tomato">13,50 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Napolitaine</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, oignons, anchois, câpres,
+										olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Bolognaise</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, sauce bolognaise, viande
+										hachée, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">11,50 €</td>
+								<td class="px-4 text-center font-bold text-tomato">13,50 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">Calzone
+										soufflée <span
+											class="font-body text-sm font-normal text-slate-500">(chausson)</span></strong><span
+										class="mt-1 block text-slate-500">Tomates ou crème fraîche, mozzarella, jambon,
+										œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Reine</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, jambon, champignons,
+										olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,00 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Végétarienne</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, champignons, tomate
+										fraîche, oignons, poivrons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">4
+										Saisons</strong><span class="mt-1 block text-slate-500">Tomates, mozzarella,
+										chorizo, champignons, poivrons, oignons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Neptune</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, thon, anchois,
+										olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Orientale</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, merguez, œuf, oignons,
+										poivrons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Vésuve</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, chorizo, chèvre, oignons,
+										œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">Spéciale
+										Chef</strong><span class="mt-1 block text-slate-500">Tomates, mozzarella, jambon
+										de pays, crème fraîche, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Nordique</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, saumon fumé, crème
+										fraîche, aneth, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Américaine</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, bacon, lardons, chèvre,
+										œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">4
+										Fromages</strong><span class="mt-1 block text-slate-500">Tomates, mozzarella,
+										bleu, chèvre, camembert, raclette, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Royale</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, champignons, jambon,
+										lardons, œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Florentino</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, merguez, chorizo,
+										poivrons, oignons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Burger</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, viande hachée, cheddar,
+										tomate fraîche, sauce burger, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Hawaïenne</strong><span
+										class="mt-1 block text-slate-500">Tomates, mozzarella, bacon, ananas,
+										olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong class="font-display text-lg text-navy">La
+										Valentina</strong><span class="mt-1 block text-slate-500">Tomates, mozzarella,
+										jambon de pays, roquette, parmesan, tomates cerises</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="mb-8 overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
+				<div class="flex flex-wrap items-center gap-3 bg-navy px-5 py-4 text-white sm:px-7">
+					<h3 class="font-display text-2xl font-bold">Pizzas base crème fraîche</h3><span
+						class="rounded-full bg-gold px-3 py-1 text-xs font-bold text-navy">26 cm &amp; 31 cm</span>
+				</div>
+				<div>
+					<table class="menu-table w-full min-w-[680px] text-left">
+						<thead class="border-b-2 border-navy bg-gold text-sm uppercase tracking-wide text-navy">
+							<tr>
+								<th class="px-5 py-3 sm:px-7">Pizza &amp; ingrédients</th>
+								<th class="w-28 px-4 py-3 text-center">26 cm</th>
+								<th class="w-28 px-4 py-3 text-center">31 cm</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-navy/10 text-sm">
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Roma</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, chèvre, miel,
+										olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Sicilienne</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, pomme de terre,
+										merguez, camembert, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Tartiflette</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, pomme de terre,
+										raclette, lardons, œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Tino</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, jambon, chèvre,
+										champignons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Trembladaise</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, pomme de terre,
+										lardons, bleu, oignons, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Venise</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, chorizo, chèvre,
+										merguez, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">L'indienne</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, curry, poulet,
+										poivrons, œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr class="bg-cream/60">
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Kebab</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, viande kebab, pomme
+										de terre, oignons, sauce kebab, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">12,00 €</td>
+								<td class="px-4 text-center font-bold text-tomato">14,80 €</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-4 sm:px-7"><strong
+										class="font-display text-lg text-navy">Garguantua</strong><span
+										class="mt-1 block text-slate-500">Crème fraîche, mozzarella, pomme de terre,
+										champignons, chorizo, lardons, jambon, œuf, olives</span></td>
+								<td class="px-4 text-center font-bold text-tomato">14,50 €</td>
+								<td class="px-4 text-center font-bold text-tomato">16,50 €</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
+				<div class="flex items-center gap-3 bg-royal px-5 py-4 text-white sm:px-7">
+					<h3 class="font-display text-2xl font-bold">Paninis</h3><span
+						class="rounded-full bg-gold px-3 py-1 text-xs font-bold text-navy">Prix unique</span>
+				</div>
+				<div class="grid divide-y divide-navy/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+					<div class="p-5 sm:px-7">
+						<p class="font-display text-lg text-navy">Crème fraîche, saumon</p>
+						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, poulet, oignons</p>
+						<p class="mt-3 font-display text-lg text-navy">Tomate, bacon, chèvre</p>
+						<p class="mt-3 font-display text-lg text-navy">Tomate, jambon</p>
+					</div>
+					<div class="p-5 sm:px-7">
+						<p class="font-display text-lg text-navy">Poulet, curry, oignons</p>
+						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, kebab, oignons</p>
+						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, chèvre, raclette</p>
+						<p class="mt-3 font-display text-lg text-navy">Chocolat</p>
+					</div>
+				</div>
+				<div
+					class="border-t-2 border-navy bg-gold px-5 py-3 text-center font-display text-xl font-bold text-navy">
+					Tous les paninis : 6,00 €</div>
+			</div>
+			<p class="mt-6 text-center text-sm text-slate-500">Les prix et recettes sont ceux affichés sur le site de
+				Tino Pizz' lors de la mise à jour.</p>
+		</section>
+
+		<section id="tournee" class="bg-navy py-20 text-white">
+			<div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
+				<div>
+					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
+					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
+					<p class="mt-5 max-w-md leading-relaxed text-white/75">Retrouvez Tino Pizz' chaque semaine dans vos
+						villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p><a
+						href="tel:+33000000000"
+						class="mt-8 inline-block rounded-full bg-tomato px-6 py-3.5 font-bold text-white shadow-[4px_4px_0_#f5b62e] transition hover:-translate-y-1">📞
+						Appeler pour commander</a>
+				</div>
+				<div class="grid gap-3 sm:grid-cols-2">
+					<div class="rounded-2xl bg-white p-5 text-ink">
+						<p class="font-display text-xl font-bold text-tomato">Mardi</p>
+						<p class="mt-3 font-bold">Prochain emplacement</p>
+						<p class="text-sm text-slate-500">Horaires à renseigner</p>
+					</div>
+					<div class="rounded-2xl bg-white p-5 text-ink">
+						<p class="font-display text-xl font-bold text-royal">Mercredi</p>
+						<p class="mt-3 font-bold">Prochain emplacement</p>
+						<p class="text-sm text-slate-500">Horaires à renseigner</p>
+					</div>
+					<div class="rounded-2xl bg-white p-5 text-ink">
+						<p class="font-display text-xl font-bold text-emerald-600">Jeudi</p>
+						<p class="mt-3 font-bold">Prochain emplacement</p>
+						<p class="text-sm text-slate-500">Horaires à renseigner</p>
+					</div>
+					<div class="rounded-2xl bg-white p-5 text-ink">
+						<p class="font-display text-xl font-bold text-tomato">Vendredi</p>
+						<p class="mt-3 font-bold">Prochain emplacement</p>
+						<p class="text-sm text-slate-500">Horaires à renseigner</p>
+					</div>
+					<div class="rounded-2xl bg-white p-5 text-ink">
+						<p class="font-display text-xl font-bold text-ink">Samedi</p>
+						<p class="mt-3 font-bold">Prochain emplacement</p>
+						<p class="text-sm text-slate-500">Horaires à renseigner</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="savoir-faire" class="relative overflow-hidden px-5 py-20 lg:px-8">
+			<div class="absolute right-[-75px] top-8 font-display text-[12rem] font-bold leading-none text-gold/25">✦
+			</div>
+			<div class="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+				<div class="relative">
+					<div class="absolute -inset-3 -rotate-3 rounded-3xl bg-tomato"></div>
+					<img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWn_q3682XPBEcXViZZeWbiU_axitHsyCChx2Xo38tKK9WwBkmy3UySXkWJ-r2jNvrFWhzgtPvZ2Thhs1XtPu4lxtUtpHbkW6ocU0N2zKSe_9cfaMEKIhHMZHvDUg802CnZndBgO=s1360-w1360-h1020-rw" alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
+				</div>
+				<div>
+					<p class="font-display text-lg text-tomato">Le savoir-faire Tino Pizz'</p>
+					<h2 class="mt-1 font-display text-4xl font-bold text-navy sm:text-5xl">Un goût qui rassemble.</h2>
+					<p class="mt-5 text-lg leading-relaxed text-slate-600">Ici, chaque pizza est préparée à la commande.
+						Notre secret ? Une pâte maison, du temps, de bons produits et une bonne dose de passion.</p>
+					<div class="mt-7 grid grid-cols-3 gap-3 text-center">
+						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🌾</span>
+							<p class="mt-2 text-xs font-bold text-navy">Pâte maison</p>
+						</div>
+						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🍅</span>
+							<p class="mt-2 text-xs font-bold text-navy">Produits frais</p>
+						</div>
+						<div class="rounded-2xl bg-white p-4 shadow-sm"><span class="text-3xl">🤌</span>
+							<p class="mt-2 text-xs font-bold text-navy">Avec amour</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
 </Layout>
