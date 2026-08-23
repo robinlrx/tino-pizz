@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   branch: main
@@ -64,3 +65,14 @@ collections:
       - { label: "Adresse", name: "adress", widget: "string" }
       - { label: "Horaire debut",  name: "hourStart",  widget: "datetime", date_format: false, time_format: "HH:mm" }
       - { label: "Horaire fin",  name: "hourEnd",  widget: "datetime", date_format: false, time_format: "HH:mm" }
+
+  - name: hero
+    label: "Infos perso et images"
+    folder: "src/content/hero"
+    create: true
+    extension: "json"
+    format: "json"
+    fields:
+     - { label: "Téléphone", name: "tel", widget: "string" }
+     - { label: "Image accueil", name: "heroImg", widget: "image" }
+     - { label: "Image savoir faire", name: "historyImg", widget: "image" }

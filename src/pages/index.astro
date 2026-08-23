@@ -7,11 +7,13 @@ import ValueCard from '../components/ValueCard.astro';
 import DayCard from '../components/DayCard.astro';
 import PizzaMenu from '../components/PizzaMenu.astro';
 
-// Lire les pizzas depuis les fichiers JSON (DecapCMS)
+// Lire les données de src/content des fichiers json de DecapCMS
 const pizzaModules = import.meta.glob('../content/pizza/*.json', { eager: true });
 const tourModules = import.meta.glob('../content/tour/*.json', { eager: true });
+const heroModules = import.meta.glob('../content/hero/*.json', { eager: true });
 
-// Charger toutes les pizzas et formater les prix
+
+// Charger toutes les pizzas
 const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
 	// @ts-ignore
 	const data = module.default;
@@ -29,6 +31,7 @@ const tomatoPizzas = allPizzas.filter(p => p.base === 'Tomate').sort((a, b) => a
 const creamPizzas = allPizzas.filter(p => p.base === 'Crème fraîche').sort((a, b) => a.price26 - b.price26);
 const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
 
+// tournée data
 // Charger la tournée du camion
 const week = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
@@ -47,12 +50,24 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 	const indexB = week.indexOf(b.day);
 	return indexA - indexB;
 });
+
+// hero data
+const heroModule = Object.values(heroModules)[0];
+// @ts-ignore
+const dataHero = heroModule.default;
+
+const heroContent = {
+	tel: dataHero.tel,
+	heroImg: dataHero.heroImg,
+	historyImg: dataHero.historyImg
+};
+const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 ---
 
 
 <Layout>
-	<Navbar />
-	<main id="accueil">
+	<Navbar htmlTel={htmlTel}/>
+	<main id="top">
 		<section class="dot-grid overflow-hidden bg-royal">
 			<div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:py-20 lg:grid-cols-[1.1fr_.9fr] lg:px-8 lg:py-24">
 				<div class="relative z-10 max-w-2xl">
@@ -68,8 +83,8 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 					<div class="absolute -inset-3 rotate-3 rounded-[2rem] bg-gold"></div>
 					<div
 						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_navy]">
-						<img src="https://tinopizz.alwaysdata.net/uploads/photo_6a072ec0b1a51.webp"
-							alt="Pizza artisanale fraîchement sortie du four"
+						<img src={heroContent.heroImg}
+							alt="camion de tino"
 							class="h-[390px] w-full object-cover sm:h-[460px]" />
 					</div>
 				</div>
@@ -91,7 +106,7 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 					<p class="mt-3 max-w-xl text-slate-600">Choisissez votre recette et votre format. Toutes nos pizzas
 						sont préparées à la commande.</p>
 				</div>
-				<Button href='tel:+33676420730' style='primaryBig'>Commander au 06 76 42 07 30</Button>
+				<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
 			</div>
 
 			<PizzaMenu
@@ -143,7 +158,7 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
 					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
 					<p class="mt-5 mb-8 max-w-md leading-relaxed text-white">Retrouvez Tino Pizz' chaque semaine dans vos villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p>
-					<Button href='tel:+33676420730' style='primaryBig'>Commander au 06 76 42 07 30</Button>
+					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
 				</div>
 				<div class="grid gap-3 sm:grid-cols-2">
 					{allTour.map((tour, index) => (
@@ -157,7 +172,7 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 			<div class="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
 				<div class="relative">
 					<div class="absolute -inset-3 -rotate-3 rounded-3xl bg-tomato"></div>
-					<img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWn_q3682XPBEcXViZZeWbiU_axitHsyCChx2Xo38tKK9WwBkmy3UySXkWJ-r2jNvrFWhzgtPvZ2Thhs1XtPu4lxtUtpHbkW6ocU0N2zKSe_9cfaMEKIhHMZHvDUg802CnZndBgO=s1360-w1360-h1020-rw" alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
+					<img src={heroContent.historyImg} alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
 				</div>
 				<div>
 					<p class="font-display text-lg text-tomato">Le savoir-faire Tino Pizz'</p>

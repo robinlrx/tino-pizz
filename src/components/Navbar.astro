@@ -1,5 +1,10 @@
 ---
 import Button from "./Button.astro"
+interface Props {
+	htmlTel: string
+}
+
+const { htmlTel } = Astro.props;
 ---
 
 <header class="sticky top-0 z-50 border-b-2 border-navy/10 bg-cream/95 backdrop-blur">
@@ -15,7 +20,7 @@ import Button from "./Button.astro"
 		</div>
 		<!-- Remplacer le numéro de téléphone dans ce lien avant mise en ligne. -->
 		<div class="flex items-center gap-3">
-			<Button href='tel:+33676420730' style='primary'>Commander <span class="hidden sm:inline">par téléphone</span></Button>
+			<Button href=`tel:+33${htmlTel}` style='primary'>Commander <span class="hidden sm:inline">par téléphone</span></Button>
 			<!-- bg icon on mobile -->
 			<button id="menu-toggle" type="button"
 				class="inline-flex h-10 w-10 items-center justify-center rounded-xl border-2 border-navy text-navy transition hover:bg-gold lg:hidden"
