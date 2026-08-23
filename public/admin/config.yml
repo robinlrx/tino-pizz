@@ -47,13 +47,20 @@ collections:
         name: "weekday"
         widget: "select"
         options:
-          - "Lundi"
-          - "Mardi"
-          - "Mercredi"
-          - "Jeudi"
-          - "Vendredi"
-          - "Samedi"
-          - "Dimanche"
+          - label: "Lundi"
+            value: "Lundi"
+          - label: "Mardi"
+            value: "Mardi"
+          - label: "Mercredi"
+            value: "Mercredi"
+          - label: "Jeudi"
+            value: "Jeudi"
+          - label: "Vendredi"
+            value: "Vendredi"
+          - label: "Samedi"
+            value: "Samedi"
+          - label: "Dimanche"
+            value: "Dimanche"
       - { label: "Adresse", name: "adress", widget: "string" }
       - { label: "Horaire debut",  name: "hourStart",  widget: "datetime", date_format: false, time_format: "HH:mm" }
       - { label: "Horaire fin",  name: "hourEnd",  widget: "datetime", date_format: false, time_format: "HH:mm" }
