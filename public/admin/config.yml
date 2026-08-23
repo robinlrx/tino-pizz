@@ -11,6 +11,13 @@ collections:
   - name: "pizza"
     label: "Pizza"
     folder: "src/content/pizza"
+    reorder:
+      group: bases
+    view_groups:
+      groups:
+        - name: bases
+          label: Bases
+          field: base
     create: true
     identifier_field: "name"
     extension: "json"
