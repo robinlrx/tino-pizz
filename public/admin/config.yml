@@ -39,12 +39,12 @@ collections:
     label: "Tournée de la semaine"
     folder: "src/content/tour"
     create: true
-    summary: "{{day}} - {{adress}}"
+    summary: "{{weekday}} - {{adress}}"
     extension: "json"
     format: "json"
     fields:
       - label: "Jour"
-        name: "day"
+        name: "weekday"
         widget: "select"
         options:
           - "Lundi"
