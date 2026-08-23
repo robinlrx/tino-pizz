@@ -55,4 +55,5 @@ collections:
           - "Samedi"
           - "Dimanche"
       - { label: "Adresse", name: "adress", widget: "string" }
-      - { label: "Horaire",  name: "horaire",  widget: "datetime", date_format: false, time_format: "HH:mm" }
+      - { label: "Horaire debut",  name: "hourStart",  widget: "datetime", date_format: false, time_format: "HH:mm" }
+      - { label: "Horaire fin",  name: "hourEnd",  widget: "datetime", date_format: false, time_format: "HH:mm" }
