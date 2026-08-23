@@ -6,8 +6,20 @@ import Button from '../components/Button.astro';
 import ValueCard from '../components/ValueCard.astro';
 import DayCard from '../components/DayCard.astro';
 import PizzaMenu from '../components/PizzaMenu.astro';
-import { creamPizzas, sweetPizzas, tomatoPizzas } from '../data/pizza';
+// import { creamPizzas, sweetPizzas, tomatoPizzas } from '../data/pizza';
 import { tour } from '../data/tour';
+import type { SanityDocument } from "@sanity/client";
+import { sanityClient } from "sanity:client";
+
+const PIZZA_QUERY = `*[
+  _type == "pizza"
+  && defined(slug.current)
+]|order(price31 asc)[0...12]{_id, title, slug, base, ingredients, price26, price31}`;
+
+const pizzas = await sanityClient.fetch<SanityDocument[]>(PIZZA_QUERY);
+const tomatoPizzas = pizzas.filter((pizza) => pizza.base === "tomate");
+const creamPizzas = pizzas.filter((pizza) => pizza.base === "creme");
+const sweetPizzas = pizzas.filter((pizza) => pizza.base === "sucree");
 
 const htmlTel = '0606060606'
 ---

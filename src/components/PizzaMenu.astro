@@ -4,7 +4,7 @@ import type { Pizza } from '../data/pizza';
 interface Props {
 	title: string;
 	headerColor: string;
-	pizzas: Pizza[];
+	pizzas: any[];
 	sizes?: 'both' | '31';
 }
 
@@ -29,7 +29,7 @@ const { title, headerColor, pizzas, sizes = 'both' } = Astro.props;
 				{pizzas.map((pizza, index) => (
 					<tr class:list={{ 'bg-cream/60': index % 2 === 1 }}>
 						<td class="px-5 py-4 sm:px-7">
-							<strong class="font-display text-lg text-navy">{pizza.name}</strong>
+							<strong class="font-display text-lg text-navy">{pizza.title}</strong>
 							<span class="mt-1 block text-slate-500">{pizza.ingredients}</span>
 						</td>
 						{sizes === 'both' && <td class="px-4 text-center font-bold text-tomato">{pizza.price26} €</td>}

@@ -1,1 +1,3 @@
-export const schemaTypes = []
+import {pizzaType} from './pizzaType'
+
+export const schemaTypes = [pizzaType]
