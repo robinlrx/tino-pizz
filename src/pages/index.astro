@@ -6,62 +6,10 @@ import Button from '../components/Button.astro';
 import ValueCard from '../components/ValueCard.astro';
 import DayCard from '../components/DayCard.astro';
 import PizzaMenu from '../components/PizzaMenu.astro';
+import { creamPizzas, sweetPizzas, tomatoPizzas } from '../data/pizza';
+import { tour } from '../data/tour';
 
-// Lire les données de src/content des fichiers json de DecapCMS
-const pizzaModules = import.meta.glob('../content/pizza/*.json', { eager: true });
-const tourModules = import.meta.glob('../content/tour/*.json', { eager: true });
-const heroModules = import.meta.glob('../content/hero/*.json', { eager: true });
-
-
-// Charger toutes les pizzas
-const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
-	// @ts-ignore
-	const data = module.default;
-	return {
-		name: data.name,
-		ingredients: data.ingredients,
-		base: data.base,
-		price26: data.price26,
-		price31: data.price31,
-	};
-});
-
-// Filtrer par base
-const tomatoPizzas = allPizzas.filter(p => p.base === 'Tomate').sort((a, b) => a.price26 - b.price26);
-const creamPizzas = allPizzas.filter(p => p.base === 'Crème fraîche').sort((a, b) => a.price26 - b.price26);
-const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
-
-// tournée data
-// Charger la tournée du camion
-const week = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-
-const allTour = Object.entries(tourModules).map(([path, module]) => {
-	// @ts-ignore
-	const data = module.default;
-	return {
-		day: data.weekday,
-		adress: data.adress,
-		hourStart: data.hourStart,
-		hourEnd: data.hourEnd,
-	};
-})
-.sort((a, b) => {
-	const indexA = week.indexOf(a.day);
-	const indexB = week.indexOf(b.day);
-	return indexA - indexB;
-});
-
-// hero data
-const heroModule = Object.values(heroModules)[0];
-// @ts-ignore
-const dataHero = heroModule.default;
-
-const heroContent = {
-	tel: dataHero.tel,
-	heroImg: dataHero.heroImg,
-	historyImg: dataHero.historyImg
-};
-const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
+const htmlTel = '0606060606'
 ---
 
 
@@ -83,7 +31,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 					<div class="absolute -inset-3 rotate-3 rounded-[2rem] bg-gold"></div>
 					<div
 						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_navy]">
-						<img src={heroContent.heroImg}
+						<img src={'img/camion.webp'}
 							alt="camion de tino"
 							class="h-[390px] w-full object-cover sm:h-[460px]" />
 					</div>
@@ -106,7 +54,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 					<p class="mt-3 max-w-xl text-slate-600">Choisissez votre recette et votre format. Toutes nos pizzas
 						sont préparées à la commande.</p>
 				</div>
-				<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
+				<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {htmlTel}</Button>
 			</div>
 
 			<PizzaMenu
@@ -158,10 +106,10 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
 					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
 					<p class="mt-5 mb-8 max-w-md leading-relaxed text-white">Retrouvez Tino Pizz' chaque semaine dans vos villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p>
-					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
+					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {htmlTel}</Button>
 				</div>
 				<div class="grid gap-3 sm:grid-cols-2">
-					{allTour.map((tour, index) => (
+					{tour.map((tour, index) => (
 						<DayCard key={index} day={tour.day} adress={tour.adress} hours={`${tour.hourStart} - ${tour.hourEnd}`} />
 					))}
 				</div>
@@ -172,7 +120,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 			<div class="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
 				<div class="relative">
 					<div class="absolute -inset-3 -rotate-3 rounded-3xl bg-tomato"></div>
-					<img src={heroContent.historyImg} alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
+					<img src={'img/pizza.webp'} alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
 				</div>
 				<div>
 					<p class="font-display text-lg text-tomato">Le savoir-faire Tino Pizz'</p>
@@ -188,12 +136,6 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 			</div>
 		</section>
 	</main>
-
-	<script>
-		if (window.location.hash.includes("invite_token=")) {
-			window.location.href = "/admin/" + window.location.hash;
-		}
-	</script>
 
 	<Footer />
 </Layout>
