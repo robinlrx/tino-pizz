@@ -32,8 +32,8 @@ const { title, headerColor, pizzas, sizes = 'both' } = Astro.props;
 							<strong class="font-display text-lg text-navy">{pizza.name}</strong>
 							<span class="mt-1 block text-slate-500">{pizza.ingredients}</span>
 						</td>
-						{sizes === 'both' && <td class="px-4 text-center font-bold text-tomato">{pizza.price26}</td>}
-						<td class="px-4 text-center font-bold text-tomato">{pizza.price31}</td>
+						{sizes === 'both' && <td class="px-4 text-center font-bold text-tomato">{pizza.price26} €</td>}
+						<td class="px-4 text-center font-bold text-tomato">{pizza.price31} €</td>
 					</tr>
 				))}
 			</tbody>

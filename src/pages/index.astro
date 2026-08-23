@@ -6,13 +6,27 @@ import Button from '../components/Button.astro';
 import ValueCard from '../components/ValueCard.astro';
 import DayCard from '../components/DayCard.astro';
 import PizzaMenu from '../components/PizzaMenu.astro';
-import { creamPizzas, sweetPizzas, tomatoPizzas } from '../data/pizza';
 
+// Lire les pizzas depuis les fichiers JSON (DecapCMS)
+const pizzaModules = import.meta.glob('../content/pizza/*.json', { eager: true });
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Charger toutes les pizzas et formater les prix
+const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
+	// @ts-ignore
+	const data = module.default;
+	return {
+		name: data.name,
+		ingredients: data.ingredients,
+		base: data.base,
+		price26: data.price26,
+		price31: data.price31,
+	};
+});
 
-
+// Filtrer par base
+const tomatoPizzas = allPizzas.filter(p => p.base === 'Tomate').sort((a, b) => a.price26 - b.price26);
+const creamPizzas = allPizzas.filter(p => p.base === 'Crème fraîche').sort((a, b) => a.price26 - b.price26);
+const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
 ---
 
 
