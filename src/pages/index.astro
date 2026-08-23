@@ -9,6 +9,7 @@ import PizzaMenu from '../components/PizzaMenu.astro';
 
 // Lire les pizzas depuis les fichiers JSON (DecapCMS)
 const pizzaModules = import.meta.glob('../content/pizza/*.json', { eager: true });
+const tourModules = import.meta.glob('../content/tour/*.json', { eager: true });
 
 // Charger toutes les pizzas et formater les prix
 const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
@@ -27,6 +28,25 @@ const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
 const tomatoPizzas = allPizzas.filter(p => p.base === 'Tomate').sort((a, b) => a.price26 - b.price26);
 const creamPizzas = allPizzas.filter(p => p.base === 'Crème fraîche').sort((a, b) => a.price26 - b.price26);
 const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
+
+// Charger la tournée du camion
+const week = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+const allTour = Object.entries(tourModules).map(([path, module]) => {
+	// @ts-ignore
+	const data = module.default;
+	return {
+		day: data.weekday,
+		adress: data.adress,
+		hourStart: data.hourStart,
+		hourEnd: data.hourEnd,
+	};
+})
+.sort((a, b) => {
+	const indexA = week.indexOf(a.day);
+	const indexB = week.indexOf(b.day);
+	return indexA - indexB;
+});
 ---
 
 
@@ -115,8 +135,6 @@ const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
 					class="border-t-2 border-navy bg-gold px-5 py-3 text-center font-display text-xl font-bold text-navy">
 					Tous les paninis : 6,00 €</div>
 			</div>
-			<p class="mt-6 text-center text-sm text-slate-500">Les prix et recettes sont ceux affichés sur le site de
-				Tino Pizz' lors de la mise à jour.</p>
 		</section>
 
 		<section id="tournee" class="bg-royal py-20 text-white">
@@ -128,11 +146,9 @@ const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
 					<Button href='tel:+33676420730' style='primaryBig'>Commander au 06 76 42 07 30</Button>
 				</div>
 				<div class="grid gap-3 sm:grid-cols-2">
-					<DayCard day="Mardi" adress="Camping Mus de Loup - Ronce les Bains" hours="18:00 - 22:00"/>
-					<DayCard day="Mercredi" adress="Camping Pacha - La Tremblade" hours="18:00 - 22:00"/>
-					<DayCard day="Jeudi" adress="Place de la salle de fêtes - L'eguille" hours="18:00 - 22:00"/>
-					<DayCard day="Vendredi" adress="Rue Marcel Gaillard - La Tremblade" hours="18:00 - 22:00"/>
-					<DayCard day="Samedi" adress="Domaine des Pins - Marennes" hours="18:00 - 22:00"/>
+					{allTour.map((tour, index) => (
+						<DayCard key={index} day={tour.day} adress={tour.adress} hours={`${tour.hourStart} - ${tour.hourEnd}`} />
+					))}
 				</div>
 			</div>
 		</section>
