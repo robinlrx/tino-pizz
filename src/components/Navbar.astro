@@ -18,7 +18,7 @@ const { htmlTel } = Astro.props;
 			<a href="#tournee" class="transition hover:text-tomato">La tournée</a>
 			<a href="#savoir-faire" class="transition hover:text-tomato">Notre histoire</a>
 		</div>
-		<!-- Remplacer le numéro de téléphone dans ce lien avant mise en ligne. -->
+
 		<div class="flex items-center gap-3">
 			<Button href=`tel:+33${htmlTel}` style='primary'>Commander <span class="hidden sm:inline">par téléphone</span></Button>
 			<!-- bg icon on mobile -->
@@ -33,17 +33,9 @@ const { htmlTel } = Astro.props;
 	</nav>
 	<div id="mobile-menu" class="hidden border-t-2 border-navy/10 bg-cream px-5 py-4 lg:hidden">
 		<div class="mx-auto flex max-w-7xl flex-col gap-1">
-			<a href="#carte"
-				class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:bg-gold">La
-				carte</a>
-			<a href="#tournee"
-				class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:bg-gold">La
-				tournée</a>
-			<a href="#savoir-faire"
-				class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:bg-gold">Notre
-				histoire</a>
-			<a href="#contact"
-				class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:bg-gold">Contact</a>
+			<a href="#carte" class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:text-tomato">La carte</a>
+			<a href="#tournee" class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:text-tomato">La tournée</a>
+			<a href="#savoir-faire" class="mobile-menu-link rounded-xl px-4 py-3 font-bold text-navy transition hover:text-tomato">Notre histoire</a>
 		</div>
 	</div>
 </header>
