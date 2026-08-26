@@ -16,6 +16,7 @@
     "@sveltia/cms": "^0.196.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.2.4",
+    "astro-seo": "^1.1.0",
     "tailwindcss": "^4.3.3"
   }
 }

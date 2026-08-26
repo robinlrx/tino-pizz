@@ -7,13 +7,14 @@ import ValueCard from '../components/ValueCard.astro';
 import DayCard from '../components/DayCard.astro';
 import PizzaMenu from '../components/PizzaMenu.astro';
 
-// Lire les données de src/content des fichiers json de DecapCMS
+// lire les données de src/content des fichiers json de DecapCMS
 const pizzaModules = import.meta.glob('../content/pizza/*.json', { eager: true });
+const paniniModules = import.meta.glob('../content/panini/*.json', { eager: true });
 const tourModules = import.meta.glob('../content/tour/*.json', { eager: true });
-const heroModules = import.meta.glob('../content/hero/*.json', { eager: true });
+const onepageModules = import.meta.glob('../content/onepage/*.json', { eager: true });
 
 
-// Charger toutes les pizzas
+// charger toutes les pizzas
 const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
 	// @ts-ignore
 	const data = module.default;
@@ -26,13 +27,22 @@ const allPizzas = Object.entries(pizzaModules).map(([path, module]) => {
 	};
 });
 
-// Filtrer par base
+// charger les paninis
+const allPaninis = Object.entries(paniniModules).map(([path, module]) => {
+	// @ts-ignore
+	const data = module.default;
+	return {
+		ingredients: data.ingredients,
+	};
+}).reverse();
+
+// filtrer par base et prix croissant
 const tomatoPizzas = allPizzas.filter(p => p.base === 'Tomate').sort((a, b) => a.price26 - b.price26);
 const creamPizzas = allPizzas.filter(p => p.base === 'Crème fraîche').sort((a, b) => a.price26 - b.price26);
 const sweetPizzas = allPizzas.filter(p => p.base === 'Sucrée');
 
 // tournée data
-// Charger la tournée du camion
+// charger la tournée du camion
 const week = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
 const allTour = Object.entries(tourModules).map(([path, module]) => {
@@ -52,16 +62,17 @@ const allTour = Object.entries(tourModules).map(([path, module]) => {
 });
 
 // hero data
-const heroModule = Object.values(heroModules)[0];
+const onepageModule = Object.values(onepageModules)[0];
 // @ts-ignore
-const dataHero = heroModule.default;
+const dataOnepage = onepageModule.default;
 
-const heroContent = {
-	tel: dataHero.tel,
-	heroImg: dataHero.heroImg,
-	historyImg: dataHero.historyImg
+const onepageContent = {
+	tel: dataOnepage.tel,
+	heroImg: dataOnepage.heroImg,
+	historyImg: dataOnepage.historyImg,
+	paniniPrice: dataOnepage.paniniPrice
 };
-const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
+const htmlTel = onepageContent.tel.replace(/\s/g, '').replace(/^0/, '');
 ---
 
 
@@ -72,7 +83,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 			<div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:py-20 lg:grid-cols-[1.1fr_.9fr] lg:px-8 lg:py-24">
 				<div class="relative z-10 max-w-2xl">
 					<h1 class="font-display text-5xl font-bold leading-[.92] text-white sm:text-6xl lg:text-7xl">La
-						pizza qui<br /><span class="doodle text-gold">fait le tour</span><br />de vos envies.</h1>
+						pizza qui<br /><span class="doodle text-gold">fait le tour</span><br />de vos envies</h1>
 					<p class="mt-6 max-w-lg text-lg leading-relaxed text-white/90">Des recettes généreuses, une pâte travaillée avec soin et des ingrédients choisis. Tino Pizz' s'arrête près de chez vous.</p>
 					<div class="mt-8 flex flex-wrap gap-4">
 						<Button href='#carte' style='secondary'>Voir la carte <span aria-hidden="true">→</span></Button>
@@ -81,21 +92,20 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 				</div>
 				<div class="relative mx-auto w-full max-w-md lg:max-w-none">
 					<div class="absolute -inset-3 rotate-3 rounded-[2rem] bg-gold"></div>
-					<div
-						class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_navy]">
-						<img src={heroContent.heroImg}
-							alt="camion de tino"
-							class="h-[390px] w-full object-cover sm:h-[460px]" />
+					<div class="relative overflow-hidden rounded-[1.7rem] border-4 border-navy bg-navy shadow-[10px_10px_0_navy]">
+						<img src={onepageContent.heroImg} alt="camion de tino" class="h-[390px] w-full object-cover sm:h-[460px]" />
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<section class="border-y-2 border-navy bg-gold py-4">
-			<div
-				class="flex justify-center gap-5 overflow-hidden whitespace-nowrap font-display text-xl font-bold text-navy sm:gap-10 sm:text-2xl">
-				<span>• PÂTE MAISON</span><span>• PRODUITS FRAIS</span><span>• RECETTES GÉNÉREUSES</span><span>• PÂTE
-					MAISON</span></div>
+			<div class="overflow-hidden whitespace-nowrap font-display text-xl font-bold text-navy sm:text-2xl">
+				<div class="flex w-max animate-infinite-x">
+					<span>• PÂTE MAISON • PRODUITS FRAIS • RECETTES GÉNÉREUSES • PÂTE MAISON • PRODUITS FRAIS • RECETTE GÉNÉREUSES • PÂTE MAISON • PRODUITS FRAIS • RECETTES GÉNÉREUSES&nbsp;</span>
+					<span>• PÂTE MAISON • PRODUITS FRAIS • RECETTES GÉNÉREUSES • PÂTE MAISON • PRODUITS FRAIS • RECETTES GÉNÉREUSES • PÂTE MAISON • PRODUITS FRAIS • RECETTES GÉNÉREUSES&nbsp;</span>
+				</div>
+			</div>
 		</section>
 
 		<section id="carte" class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
@@ -106,7 +116,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 					<p class="mt-3 max-w-xl text-slate-600">Choisissez votre recette et votre format. Toutes nos pizzas
 						sont préparées à la commande.</p>
 				</div>
-				<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
+				<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {onepageContent.tel}</Button>
 			</div>
 
 			<PizzaMenu
@@ -134,21 +144,19 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 				</div>
 				<div class="grid divide-y divide-navy/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
 					<div class="p-5 sm:px-7">
-						<p class="font-display text-lg text-navy">Crème fraîche, saumon</p>
-						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, poulet, oignons</p>
-						<p class="mt-3 font-display text-lg text-navy">Tomate, bacon, chèvre</p>
-						<p class="mt-3 font-display text-lg text-navy">Tomate, jambon</p>
+						{allPaninis.slice(0, 4).map((panini) => (
+							<p class="font-display text-lg text-navy">{panini.ingredients}</p>
+						))}
 					</div>
 					<div class="p-5 sm:px-7">
-						<p class="font-display text-lg text-navy">Poulet, curry, oignons</p>
-						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, kebab, oignons</p>
-						<p class="mt-3 font-display text-lg text-navy">Crème fraîche, chèvre, raclette</p>
-						<p class="mt-3 font-display text-lg text-navy">Chocolat</p>
+						{allPaninis.slice(4).map((panini) => (
+							<p class="font-display text-lg text-navy">{panini.ingredients}</p>
+						))}
 					</div>
 				</div>
 				<div
 					class="border-t-2 border-navy bg-gold px-5 py-3 text-center font-display text-xl font-bold text-navy">
-					Tous les paninis : 6,00 €</div>
+					Tous les paninis : {onepageContent.paniniPrice} €</div>
 			</div>
 		</section>
 
@@ -158,7 +166,7 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
 					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
 					<p class="mt-5 mb-8 max-w-md leading-relaxed text-white">Retrouvez Tino Pizz' chaque semaine dans vos villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p>
-					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {heroContent.tel}</Button>
+					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {onepageContent.tel}</Button>
 				</div>
 				<div class="grid gap-3 sm:grid-cols-2">
 					{allTour.map((tour, index) => (
@@ -172,13 +180,12 @@ const htmlTel = heroContent.tel.replace(/\s/g, '').replace(/^0/, '');
 			<div class="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
 				<div class="relative">
 					<div class="absolute -inset-3 -rotate-3 rounded-3xl bg-tomato"></div>
-					<img src={heroContent.historyImg} alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
+					<img src={onepageContent.historyImg} alt="Pizza préparée artisanalement" class="relative h-80 w-full rounded-3xl border-[3px] border-navy object-cover shadow-punch sm:h-96" />
 				</div>
 				<div>
 					<p class="font-display text-lg text-tomato">Le savoir-faire Tino Pizz'</p>
-					<h2 class="mt-1 font-display text-4xl font-bold text-navy sm:text-5xl">Un goût qui rassemble.</h2>
-					<p class="mt-5 text-lg leading-relaxed text-slate-600">Ici, chaque pizza est préparée à la commande.
-						Notre secret ? Une pâte maison, du temps, de bons produits et une bonne dose de passion.</p>
+					<h2 class="mt-1 font-display text-4xl font-bold text-navy sm:text-5xl">Plus de 10 ans d'expérience.</h2>
+					<p class="mt-5 text-lg leading-relaxed text-slate-600">Après plus de 10 ans dans notre pizzeria à La Tremblade, nous avons pris la route pour vous offrir nos pizzas généreuses et savoureuses, directement depuis notre camion pizza. Où que vous soyez, Tino Pizz' vous régalera !</p>
 					<div class="mt-7 grid grid-cols-3 gap-3 text-center">
 						<ValueCard icon='🌾' text='Pâte maison' />
 						<ValueCard icon='🍅' text='Produits frais' />

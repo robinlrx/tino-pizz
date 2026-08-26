@@ -1,16 +1,35 @@
 ---
 import "../styles/global.css";
+import { SEO } from "astro-seo";
+
+const onepageModules = import.meta.glob('../content/onepage/*.json', { eager: true });
+const onepageModule = Object.values(onepageModules)[0];
+// @ts-ignore
+const heroImg = onepageModule.default.heroImg;
+console.log('heroImg:', typeof heroImg)
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<SEO
+			description="Tino Pizz' est un camion pizza proposant des pizzas préparées sur place avec une pâte maison et des recettes généreuses. Retrouvez notre camion à La Tremblade, Ronce les Bains, Marennes et L'Éguille."
+			openGraph={{
+				// card sharded on socials networks
+				basic: {
+					title: "Tino Pizz'",
+					type: "website",
+					image: `https://tinopizz.netlify.app${heroImg}`,
+					url: 'https://tinopizz.netlify.app/'
+				}
+			}}
+		/>
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Tino pizz</title>
+		<title>Tino Pizz' – Camion pizza à La Tremblade, Ronce-les-Bains, Marennes et L'Éguille.</title>
+		<link rel="canonical" href="https://tinopizz.netlify.app/">
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
