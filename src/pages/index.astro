@@ -133,12 +133,12 @@ const htmlTel = onepageContent.tel.replace(/\s/g, '').replace(/^0/, '');
 
 			<PizzaMenu
 				title="Pizzas sucrées"
-				headerColor="bg-navy"
+				headerColor="bg-[#8c4a29]"
 				pizzas={sweetPizzas}
 				sizes="31"
 			/>
 			<div class="overflow-hidden rounded-3xl border-2 border-navy bg-white shadow-punch">
-				<div class="flex items-center gap-3 bg-navy px-5 py-4 text-white sm:px-7">
+				<div class="flex items-center gap-3 bg-[#00a650] px-5 py-4 text-white sm:px-7">
 					<h3 class="font-display text-2xl font-bold">Paninis</h3><span
 						class="rounded-full bg-gold px-3 py-1 text-xs font-bold text-navy">Prix unique</span>
 				</div>
@@ -164,7 +164,7 @@ const htmlTel = onepageContent.tel.replace(/\s/g, '').replace(/^0/, '');
 			<div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
 				<div>
 					<p class="font-display text-lg text-gold">La tournée de la semaine</p>
-					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous.</h2>
+					<h2 class="mt-1 font-display text-4xl font-bold sm:text-5xl">Le camion<br />vient à vous</h2>
 					<p class="mt-5 mb-8 max-w-md leading-relaxed text-white">Retrouvez Tino Pizz' chaque semaine dans vos villes et villages. Passez votre commande à l'avance pour être sûr de vous régaler.</p>
 					<Button href=`tel:+33${htmlTel}` style='primaryBig'>Commander au {onepageContent.tel}</Button>
 				</div>
@@ -184,12 +184,12 @@ const htmlTel = onepageContent.tel.replace(/\s/g, '').replace(/^0/, '');
 				</div>
 				<div>
 					<p class="font-display text-lg text-tomato">Le savoir-faire Tino Pizz'</p>
-					<h2 class="mt-1 font-display text-4xl font-bold text-navy sm:text-5xl">Plus de 10 ans d'expérience.</h2>
+					<h2 class="mt-1 font-display text-4xl font-bold text-navy sm:text-5xl">Plus de 10 ans d'expérience</h2>
 					<p class="mt-5 text-lg leading-relaxed text-slate-600">Après plus de 10 ans dans notre pizzeria à La Tremblade, nous avons pris la route pour vous offrir nos pizzas généreuses et savoureuses, directement depuis notre camion pizza. Où que vous soyez, Tino Pizz' vous régalera !</p>
 					<div class="mt-7 grid grid-cols-3 gap-3 text-center">
-						<ValueCard icon='🌾' text='Pâte maison' />
-						<ValueCard icon='🍅' text='Produits frais' />
-						<ValueCard icon='🤌' text='Avec amour' />
+						<ValueCard icon='🍕' text='Pâte maison' />
+						<ValueCard icon='🥬' text='Produits frais' />
+						<ValueCard icon='❤️' text='Avec amour' />
 					</div>
 				</div>
 			</div>
